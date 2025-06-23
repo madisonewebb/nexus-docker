@@ -13,8 +13,6 @@ services:
       - GH_OWNER=${GH_OWNER}
       - GH_REPOSITORY=${GH_REPOSITORY}
       - GH_TOKEN=${GH_TOKEN}
-    restart: unless-stopped
-    
+  
 volumes:
   nexus-data:
-    driver: local

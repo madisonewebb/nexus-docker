@@ -9,6 +9,9 @@ RUN apt install -y curl && apt-get install -y jq
 RUN mkdir -p /home/GHA/actions-runner
 WORKDIR /home/GHA/actions-runner
 
+# Create a non-root user
+RUN useradd -m -u 1001 GHA
+
 # Download the latest runner package
 RUN curl -O -L https://github.com/actions/runner/releases/download/v2.325.0/actions-runner-linux-arm64-2.325.0.tar.gz
 
@@ -20,9 +23,6 @@ ADD scripts/start.sh /home/GHA/actions-runner/start.sh
 
 # Make the script executable
 RUN chmod +x ./start.sh
-
-# Create a non-root user
-RUN useradd -m -u 1001 GHA
 
 # Switch to the non-root user
 USER GHA
