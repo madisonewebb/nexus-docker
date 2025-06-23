@@ -1,0 +1,15 @@
+services:
+  nexus:
+    build:
+      context: ./nexus
+    ports:
+      - "8081:8081"
+    volumes:
+      - nexus-data:/nexus-data
+  runner:
+    build:
+      context: ./runner
+    
+volumes:
+  nexus-data:
+    driver: local
