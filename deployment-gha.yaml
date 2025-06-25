@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: runner
+  namespace: bootcamp
+  labels:
+    app: runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: runner
+  template:
+    metadata:
+      labels:
+        app: runner
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: runner
+          image: nexus-docker-runner:v1.0.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: GH_OWNER
+              value: madisonewebb
+            - name: GH_REPOSITORY
+              value: nexus-docker
+            - name: GH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: token

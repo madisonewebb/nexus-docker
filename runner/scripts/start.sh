@@ -20,4 +20,9 @@ cleanup() {
 trap 'cleanup; exit 130' INT
 trap 'cleanup; exit 143' TERM
 
-./run.sh & wait $!
+# Run the runner in a loop to keep it alive
+while true; do
+    ./run.sh --once
+    echo "Runner exited, restarting in 30 seconds..."
+    sleep 30
+done
