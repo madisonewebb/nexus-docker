@@ -24,7 +24,7 @@ spec:
             - name: GH_OWNER
               value: madisonewebb
             - name: GH_REPOSITORY
-              value: nexus-docker
+              value: spring-petclinic
             - name: GH_TOKEN
               valueFrom:
                 secretKeyRef:

@@ -1,7 +1,4 @@
 #!/bin/bash
-GH_OWNER=${GH_OWNER}
-GH_REPOSITORY=${GH_REPOSITORY}
-GH_TOKEN=${GH_TOKEN}
 
 RUNNER_SUFFIX=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 5 | head -n 1)
 RUNNER_NAME="dockerNode-${RUNNER_SUFFIX}"
